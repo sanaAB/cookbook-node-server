@@ -1,11 +1,11 @@
-// const express = require('express');
-// const app = express();
-// const recipes = require("./data");
+const express = require('express');
+const router = express.Router();
+const recipes = require("./data");
 
+    router.get("/",(req,res,next)=>{
+        res.send(recipes);
+    });
 
-//     console.log(recipes);
-//     module.exports = app.get("/Home",(req,res,next)=>{
-//         res.send(recipes);
-//     });
+    module.exports = router;
 
 

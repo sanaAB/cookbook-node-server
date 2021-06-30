@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const recipeSchema = new Schema({
-  name: String, // String is shorthand for {type: String}
-  slug: String,
-  description: String,
-  ingredients: Array,
-  category: String,
-  image: String,
-  // date: { type: Date, default: Date.now },
+  name: { type: String, required: true }, 
+  slug: { type: String, required: true },
+  description: { type: String, required: true },
+  ingredients: { type: Array, required: true },
+  category: { type: String, required: true },
+  image: { type: String, required: true },
 });
-
-module.exports = mongoose.model("recipe", recipeSchema);
+recipeSchema.index({ slug: 1, userid: 1 }, { unique: true });
+const model = mongoose.model('recipe', recipeSchema);
+module.exports = model;
